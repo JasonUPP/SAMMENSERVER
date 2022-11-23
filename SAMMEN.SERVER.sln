@@ -5,7 +5,9 @@ VisualStudioVersion = 17.4.33110.190
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SAMMEN.API", "SAMMEN.API\SAMMEN.API.csproj", "{B099BF91-D96F-452A-A479-C93CAEC4A0A2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataBase", "DataBase\DataBase.csproj", "{DB46D09C-24DB-493C-AEE0-52A591A1D31B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataBase", "DataBase\DataBase.csproj", "{DB46D09C-24DB-493C-AEE0-52A591A1D31B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthJWT", "AuthJWT\AuthJWT.csproj", "{B65FAC79-2037-43BB-B3FC-621CC50726D4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{DB46D09C-24DB-493C-AEE0-52A591A1D31B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DB46D09C-24DB-493C-AEE0-52A591A1D31B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DB46D09C-24DB-493C-AEE0-52A591A1D31B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B65FAC79-2037-43BB-B3FC-621CC50726D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B65FAC79-2037-43BB-B3FC-621CC50726D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B65FAC79-2037-43BB-B3FC-621CC50726D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B65FAC79-2037-43BB-B3FC-621CC50726D4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
