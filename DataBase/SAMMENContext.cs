@@ -6,7 +6,7 @@ namespace DataBase
     public class SAMMENContext : DbContext
     {
         public SAMMENContext(DbContextOptions<SAMMENContext> options) : base(options) {}
-        DbSet<User> Users { get; set; }
+        public DbSet<User> Users { get; set; }
         DbSet<Herramienta> Herramientas { get; set; }
         DbSet<MedidaHerramienta> MedidaHerramientas{ get; set; }
 

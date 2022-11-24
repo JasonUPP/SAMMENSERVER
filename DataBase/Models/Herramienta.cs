@@ -1,9 +1,13 @@
 ﻿using DataBase.Enums;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 
 namespace SAMMEN.DataBase.Models
 {
     public class Herramienta
     {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         public int Num { get; set; }
         public string Descripcion { get; set; }

@@ -1,8 +1,11 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace SAMMEN.API.Controllers
 {
+    [Authorize]
     [ApiController]
+    //[AllowAnonymous] permite que cualquiera acceda sin token
     [Route("[controller]")]
     public class WeatherForecastController : ControllerBase
     {
