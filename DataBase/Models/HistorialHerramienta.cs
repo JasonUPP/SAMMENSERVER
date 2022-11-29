@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
+using DataBase.Enums;
 
 namespace DataBase.Models
 {
@@ -7,36 +8,53 @@ namespace DataBase.Models
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; }        
-        public int IdMotorFondo { get; set; }
+        public int Id { get; set; }
+        public int Numero { get; set; }
+        //public int IdMotorFondo { get; set; }
 
-        [ForeignKey("IdMotorFondo")]
-        public virtual MotorFondo MotorFondo { get; set; }
+        //[ForeignKey("IdMotorFondo")]
+        //public virtual MotorFondo MotorFondo { get; set; }
         public DateTime Fecha { get; set; }
         public string Pozo { get; set; }
-        public string TipoOperacion { get; set; }//posible enum
-        public string Unidad { get; set; }
-        public string Operador { get; set; } //posible relacion a nueva clase operador
+        public EnumTipoOperacion TipoOperacion { get; set; }
+        public EnumUnidad Unidad { get; set; }
+
+        public int IdOperador { get; set; }
+        
+        [ForeignKey("IdOperador")]
+        public virtual Operador Operador{ get; set; }
         public int ProfundidadMax { get; set; }
 
         [Column(TypeName = "decimal(10,4)")]
         public decimal OD { get; set; }
-        //posible decimal hasta comporbar con cliente
-        public int MaxWHP { get; set; }
-        public int TemperaturaMaxima { get; set; }
-        public int MaxCircPressure { get; set; }
-        public int Diesel { get; set; }
 
         [Column(TypeName = "decimal(10,4)")]
-        public int Solvente { get; set; }
-        public int Acido { get; set; }
-        public int Divergente { get; set; }
-        public int Nitrogeno { get; set; }
+        public decimal MaxWHP { get; set; }
+
+        [Column(TypeName = "decimal(10,4)")]
+        public decimal TemperaturaMaxima { get; set; }
+
+        [Column(TypeName = "decimal(10,4)")]
+        public decimal MaxCircPressure { get; set; }
+
+        [Column(TypeName = "decimal(10,4)")]
+        public decimal Diesel { get; set; }
+
+        [Column(TypeName = "decimal(10,4)")]
+        public decimal Solvente { get; set; }
+
+        [Column(TypeName = "decimal(10,4)")]
+        public decimal Acido { get; set; }
+        public decimal Divergente { get; set; }
+
+        [Column(TypeName = "decimal(10,4)")]
+        public decimal Nitrogeno { get; set; }
 
         [Column(TypeName = "decimal(10,4)")]
         public decimal GelLineal { get; set; }
-        public int Agua { get; set; }
 
+        [Column(TypeName = "decimal(10,4)")]
+        public decimal Agua { get; set; }
         public int HorasOperativas { get; set; }
         public int HorasEfectivas { get; set; }
         public string Notas { get; set; }
