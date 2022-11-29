@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using DataBase.Models;
+using Microsoft.EntityFrameworkCore;
 using SAMMEN.DataBase.Models;
 
 namespace DataBase
@@ -9,6 +10,8 @@ namespace DataBase
         public DbSet<User> Users { get; set; }
         DbSet<Herramienta> Herramientas { get; set; }
         DbSet<MedidaHerramienta> MedidaHerramientas{ get; set; }
+        DbSet<MotorFondo> MotorFondos { get; set; }
+        DbSet<HistorialHerramienta> HistorialMotorFondos { get; set; }
 
     }
 }

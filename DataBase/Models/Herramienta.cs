@@ -22,6 +22,7 @@ namespace SAMMEN.DataBase.Models
         public string Ubicacion { get; set; }
         public DateTime UltimoMtto { get; set; }
         public int DiasSinMtto { get; set; }
+        public string Observaciones { get; set; }
         public EnumTipoHerramienta Tipo { get;set; }
     }
 }
