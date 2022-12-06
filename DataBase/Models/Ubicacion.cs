@@ -3,15 +3,15 @@ using System.ComponentModel.DataAnnotations;
 
 namespace DataBase.Models
 {
-    public class MotorFondo
+     class Ubicacion
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-
-        public string Marca { get; set; }
-        public string Modelo { get; set; }
-        public string NumSerie { get; set; }
-        public virtual ICollection<HistorialHerramienta> Historial { get; set; }
+        public string Nombre { get; set; }
+        public string Abreviatura { get; set; }
+        public string Direccion { get; set; }
+        public int NumeroCelular { get; set; }
+        public int CantidadUTF { get; set; }
     }
 }

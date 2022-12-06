@@ -21,7 +21,7 @@ namespace AuthJWT.Data
         {
             var claims = new List<Claim> 
             { 
-                new Claim(JwtRegisteredClaimNames.NameId, user.UserName) 
+                new Claim(JwtRegisteredClaimNames.NameId, user.Email) 
             };
             var credentials = new SigningCredentials(_ssKey, SecurityAlgorithms.HmacSha512Signature);
             var tokenDescriptor = new SecurityTokenDescriptor

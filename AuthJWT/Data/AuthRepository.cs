@@ -15,9 +15,9 @@ namespace AuthJWT.Data
         {
             _context = context;
         }
-        public async Task<User> Login(string username, string password)
+        public async Task<User> Login(string email, string password)
         {
-            var user = await _context.Users.FirstOrDefaultAsync(x => x.UserName == username);
+            var user = await _context.Users.FirstOrDefaultAsync(x => x.Email == email);
             if (user == null) return null;
             if (!VerifyPasswordHash(password, user.PasswordHash, user.PasswordSalt)) return null;
             return user;            
@@ -57,9 +57,9 @@ namespace AuthJWT.Data
             }
         }
 
-        public async Task<bool> UserExist(string username)
+        public async Task<bool> UserExist(string email)
         {
-            if(await _context.Users.AnyAsync(x => x.Email == username)) return true;
+            if(await _context.Users.AnyAsync(x => x.Email == email)) return true;
             return false;            
         }
     }

@@ -10,6 +10,7 @@ namespace SAMMEN.DataBase.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
+        public int Numero { get; set; }
         public string Descripcion { get; set; }
 
         [Column(TypeName = "decimal(10,4)")]
@@ -26,6 +27,11 @@ namespace SAMMEN.DataBase.Models
         public decimal Longitud { get; set; }
         public string NumeroSerie { get; set; }
         public EnumEstatus Estatus { get; set; }
-        public EnumTipoMedidaHerramienta Tipo { get; set; }
+        
+        [Column(TypeName = "decimal(10,4)")]
+        public decimal PresionMaxima { get; set; }
+        public string BalinSub { get; set; }
+        public string BalinDesconector { get; set; }
+        public EnumTipoMedidaHerramienta Tipo { get; set; }        
     }
 }

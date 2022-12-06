@@ -1,7 +1,6 @@
 ﻿using AuthJWT.Data.Interfaces;
 using AuthJWT.Dtos;
 using AutoMapper;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SAMMEN.DataBase.Models;
 
@@ -25,8 +24,8 @@ namespace SAMMEN.API.Controllers
         [HttpPost("SignUp")]
         public async Task<IActionResult> SignUp(UserSignUpDto userSignUpDto)
         {
-            userSignUpDto.UserName = userSignUpDto.UserName.ToLower();
-            if (await _repository.UserExist(userSignUpDto.UserName))
+            userSignUpDto.Email = userSignUpDto.Email.ToLower();
+            if (await _repository.UserExist(userSignUpDto.Email))
                 return BadRequest("usuario ya existe");
 
             var newUser = _mapper.Map<User>(userSignUpDto);
@@ -38,7 +37,7 @@ namespace SAMMEN.API.Controllers
         [HttpPost("Login")]
         public async Task<IActionResult> Login(UserLoginDto userLoginDto)
         {
-            var user = await _repository.Login(userLoginDto.UserName, userLoginDto.Password);
+            var user = await _repository.Login(userLoginDto.Email, userLoginDto.Password);
             if (user == null)
                 return Unauthorized();
             var returnUser = _mapper.Map<UserListDto>(user);

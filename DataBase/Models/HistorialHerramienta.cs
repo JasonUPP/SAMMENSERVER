@@ -10,17 +10,11 @@ namespace DataBase.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         public int Numero { get; set; }
-        //public int IdMotorFondo { get; set; }
-
-        //[ForeignKey("IdMotorFondo")]
-        //public virtual MotorFondo MotorFondo { get; set; }
         public DateTime Fecha { get; set; }
         public string Pozo { get; set; }
         public EnumTipoOperacion TipoOperacion { get; set; }
         public EnumUnidad Unidad { get; set; }
-
-        public int IdOperador { get; set; }
-        
+        public int IdOperador { get; set; }        
         [ForeignKey("IdOperador")]
         public virtual Operador Operador{ get; set; }
         public int ProfundidadMax { get; set; }
@@ -45,6 +39,9 @@ namespace DataBase.Models
 
         [Column(TypeName = "decimal(10,4)")]
         public decimal Acido { get; set; }
+        
+        [Column(TypeName = "decimal(10,4)")]
+
         public decimal Divergente { get; set; }
 
         [Column(TypeName = "decimal(10,4)")]
@@ -61,10 +58,5 @@ namespace DataBase.Models
 
         [Column(TypeName = "decimal(10,4)")]
         public decimal Total { get; set; }
-
-
-
-
-
     }
 }

@@ -14,6 +14,15 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddScoped<IAuthRepository, AuthRepository>();
 builder.Services.AddScoped<ITokenService, TokenService>();
+builder.Services.AddCors(options => {
+    options.AddPolicy(name: "cors",
+                      policy =>
+                      {
+                          policy.WithOrigins("*")
+                          .AllowAnyMethod()
+                          .AllowAnyHeader();
+                      });
+});
 
 builder.Services.AddAutoMapper(typeof(AutoMapperProfile).Assembly);
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
@@ -51,6 +60,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseCors("cors");
 
 app.UseAuthentication();
 
