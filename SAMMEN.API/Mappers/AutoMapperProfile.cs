@@ -1,6 +1,6 @@
 ﻿using AuthJWT.Dtos;
 using AutoMapper;
-using SAMMEN.DataBase.Models;
+using DataBase.Models.Operativo;
 
 namespace SAMMEN.API.Mappers
 {

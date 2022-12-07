@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
-using DataBase.Enums;
+using DataBase.Enums.Operativo;
 
-namespace DataBase.Models
+namespace DataBase.Models.Operativo
 {
     public class HistorialHerramienta
     {
@@ -14,9 +14,9 @@ namespace DataBase.Models
         public string Pozo { get; set; }
         public EnumTipoOperacion TipoOperacion { get; set; }
         public EnumUnidad Unidad { get; set; }
-        public int IdOperador { get; set; }        
+        public int IdOperador { get; set; }
         [ForeignKey("IdOperador")]
-        public virtual Operador Operador{ get; set; }
+        public virtual Operador Operador { get; set; }
         public int ProfundidadMax { get; set; }
 
         [Column(TypeName = "decimal(10,4)")]
@@ -39,7 +39,7 @@ namespace DataBase.Models
 
         [Column(TypeName = "decimal(10,4)")]
         public decimal Acido { get; set; }
-        
+
         [Column(TypeName = "decimal(10,4)")]
 
         public decimal Divergente { get; set; }

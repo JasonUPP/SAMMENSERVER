@@ -1,4 +1,4 @@
-﻿namespace DataBase.Enums
+﻿namespace DataBase.Enums.Operativo
 {
     public enum EnumTipoHerramienta
     {
@@ -13,8 +13,8 @@
         Crossovers = 9,
         Centralizadores = 10,
         Pescantes = 11,
-        SellosPlomo =12,
-        ZapatasLavadoras =13,
-        JuntasRodilla =14,
+        SellosPlomo = 12,
+        ZapatasLavadoras = 13,
+        JuntasRodilla = 14,
     }
 }

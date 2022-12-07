@@ -1,4 +1,4 @@
-﻿using SAMMEN.DataBase.Models;
+﻿using DataBase.Models.Operativo;
 
 namespace AuthJWT.Data.Interfaces
 {

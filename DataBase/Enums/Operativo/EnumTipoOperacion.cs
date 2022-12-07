@@ -1,9 +1,9 @@
-﻿namespace DataBase.Enums
+﻿namespace DataBase.Enums.Operativo
 {
     public enum EnumTipoOperacion
     {
         Induccion = 1,
-        Molienda =2,
+        Molienda = 2,
         TomaRegistroPT = 3,
         LimpiezaAparejo = 4,
         Estimulacion = 5,

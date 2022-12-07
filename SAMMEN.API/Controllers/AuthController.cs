@@ -1,8 +1,8 @@
 ﻿using AuthJWT.Data.Interfaces;
 using AuthJWT.Dtos;
 using AutoMapper;
+using DataBase.Models.Operativo;
 using Microsoft.AspNetCore.Mvc;
-using SAMMEN.DataBase.Models;
 
 namespace SAMMEN.API.Controllers
 {

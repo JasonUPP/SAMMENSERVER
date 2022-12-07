@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace SAMMEN.DataBase.Models
+namespace DataBase.Models.Operativo
 {
     public class User
     {
@@ -10,7 +10,7 @@ namespace SAMMEN.DataBase.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public string LastName { get; set; }
-        public string Email { get; set; }       
+        public string Email { get; set; }
         public byte[] PasswordHash { get; set; }
         public byte[] PasswordSalt { get; set; }
         public bool IsAdmin { get; set; }

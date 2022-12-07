@@ -1,8 +1,8 @@
-﻿using DataBase.Enums;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
+using DataBase.Enums.Operativo;
 
-namespace SAMMEN.DataBase.Models
+namespace DataBase.Models.Operativo
 {
     public class Herramienta
     {
@@ -24,10 +24,10 @@ namespace SAMMEN.DataBase.Models
         public DateTime UltimoMtto { get; set; }
         public int DiasSinMtto { get; set; }
         public string Observaciones { get; set; }
-        public EnumTipoHerramienta Tipo { get;set; }
+        public EnumTipoHerramienta Tipo { get; set; }
         public int IdMedidaHerramienta { get; set; }
         [ForeignKey("IdMedidaHerramienta")]
-        public virtual MedidaHerramienta MedidaHerramienta{ get; set; }
+        public virtual MedidaHerramienta MedidaHerramienta { get; set; }
         public string Marca { get; set; }
         public string Modelo { get; set; }
     }

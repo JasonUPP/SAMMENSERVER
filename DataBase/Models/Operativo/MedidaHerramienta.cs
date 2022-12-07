@@ -1,9 +1,9 @@
-﻿using DataBase.Enums;
+﻿using DataBase.Enums.Operativo;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace SAMMEN.DataBase.Models
+namespace DataBase.Models.Operativo
 {
     public class MedidaHerramienta
     {
@@ -27,11 +27,11 @@ namespace SAMMEN.DataBase.Models
         public decimal Longitud { get; set; }
         public string NumeroSerie { get; set; }
         public EnumEstatus Estatus { get; set; }
-        
+
         [Column(TypeName = "decimal(10,4)")]
         public decimal PresionMaxima { get; set; }
         public string BalinSub { get; set; }
         public string BalinDesconector { get; set; }
-        public EnumTipoMedidaHerramienta Tipo { get; set; }        
+        public EnumTipoMedidaHerramienta Tipo { get; set; }
     }
 }

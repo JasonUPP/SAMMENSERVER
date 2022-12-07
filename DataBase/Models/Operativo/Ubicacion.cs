@@ -1,17 +1,17 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
-using DataBase.Enums;
 
-namespace DataBase.Models
+namespace DataBase.Models.Operativo
 {
-    public class Cursos
+    class Ubicacion
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-        public EnumReferencia Referencia { get; set; }
         public string Nombre { get; set; }
-        public DateTime Vigencia { get; set; }
-        public EnumIngeHerramientasJr IngenieroHerramientas { get; set; }//enum
+        public string Abreviatura { get; set; }
+        public string Direccion { get; set; }
+        public int NumeroCelular { get; set; }
+        public int CantidadUTF { get; set; }
     }
 }

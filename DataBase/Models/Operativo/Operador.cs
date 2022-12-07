@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace DataBase.Models
+namespace DataBase.Models.Operativo
 {
     public class Operador
     {

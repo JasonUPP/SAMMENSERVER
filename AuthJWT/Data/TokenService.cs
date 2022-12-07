@@ -1,7 +1,7 @@
 ﻿using AuthJWT.Data.Interfaces;
+using DataBase.Models.Operativo;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
-using SAMMEN.DataBase.Models;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;

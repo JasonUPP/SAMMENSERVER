@@ -1,4 +1,4 @@
-﻿namespace DataBase.Enums
+﻿namespace DataBase.Enums.Operativo
 {
     public enum EnumUnidad
     {

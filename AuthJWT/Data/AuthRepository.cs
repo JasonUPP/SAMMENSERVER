@@ -1,7 +1,7 @@
 ﻿using AuthJWT.Data.Interfaces;
 using DataBase;
+using DataBase.Models.Operativo;
 using Microsoft.EntityFrameworkCore;
-using SAMMEN.DataBase.Models;
 using System.Security.Cryptography;
 using System.Text;
 

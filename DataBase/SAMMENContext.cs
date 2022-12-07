@@ -1,6 +1,5 @@
-﻿using DataBase.Models;
+﻿using DataBase.Models.Operativo;
 using Microsoft.EntityFrameworkCore;
-using SAMMEN.DataBase.Models;
 
 namespace DataBase
 {

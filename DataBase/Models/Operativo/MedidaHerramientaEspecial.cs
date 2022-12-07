@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
-using DataBase.Enums;
+using DataBase.Enums.Operativo;
 
-namespace DataBase.Models
+namespace DataBase.Models.Operativo
 {
     public class MedidaHerramientaEspecial
     {
@@ -13,10 +13,10 @@ namespace DataBase.Models
         public string Descripcion { get; set; }
 
         [Column(TypeName = "decimal(10,4)")]
-        public decimal RoscaGIR  { get; set; }
+        public decimal RoscaGIR { get; set; }
 
         [Column(TypeName = "decimal(10,4)")]
-        public decimal RoscaCaja{ get; set; }
+        public decimal RoscaCaja { get; set; }
 
         [Column(TypeName = "decimal(10,4)")]
         public decimal DiametroExterno { get; set; }
