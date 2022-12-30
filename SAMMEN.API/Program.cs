@@ -5,6 +5,8 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using SAMMEN.API.Mappers;
+using SAMMEN.API.Services.Operativo;
+using SAMMEN.API.Services.Operativo.Interfaces;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,6 +15,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddScoped<IAuthRepository, AuthRepository>();
+builder.Services.AddScoped<IHerramientaRepository, HerramientaRepository>();
 builder.Services.AddScoped<ITokenService, TokenService>();
 builder.Services.AddCors(options => {
     options.AddPolicy(name: "cors",

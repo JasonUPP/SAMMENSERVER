@@ -26,7 +26,7 @@ namespace SAMMEN.API.Controllers
         {
             userSignUpDto.Email = userSignUpDto.Email.ToLower();
             if (await _repository.UserExist(userSignUpDto.Email))
-                return BadRequest("usuario ya existe");
+                return BadRequest("Email ya en uso");
 
             var newUser = _mapper.Map<User>(userSignUpDto);
             var createdUser = await _repository.SignUp(newUser, userSignUpDto.Password);
@@ -39,7 +39,7 @@ namespace SAMMEN.API.Controllers
         {
             var user = await _repository.Login(userLoginDto.Email, userLoginDto.Password);
             if (user == null)
-                return Unauthorized();
+                return BadRequest("Credenciales incorrectas");
             var returnUser = _mapper.Map<UserListDto>(user);
             var token = _tokenService.CreateToken(user);
             return Ok(new 

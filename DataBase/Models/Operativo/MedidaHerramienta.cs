@@ -29,6 +29,9 @@ namespace DataBase.Models.Operativo
         public EnumEstatus Estatus { get; set; }
 
         [Column(TypeName = "decimal(10,4)")]
+        public decimal TensionMaxima { get; set; }
+
+        [Column(TypeName = "decimal(10,4)")]
         public decimal PresionMaxima { get; set; }
         public string BalinSub { get; set; }
         public string BalinDesconector { get; set; }

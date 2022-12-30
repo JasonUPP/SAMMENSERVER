@@ -12,12 +12,13 @@ namespace DataBase.Models.Operativo
         public int Numero { get; set; }
         public DateTime Fecha { get; set; }
         public string Pozo { get; set; }
-        public EnumTipoOperacion TipoOperacion { get; set; }
+        public string Estructura { get; set; }
+        public EnumTipoOperacion TipoOperacion { get; set; }//2
         public EnumUnidad Unidad { get; set; }
         public int IdOperador { get; set; }
         [ForeignKey("IdOperador")]
         public virtual Operador Operador { get; set; }
-        public int ProfundidadMax { get; set; }
+        public int ProfundidadMax { get; set; } //5
 
         [Column(TypeName = "decimal(10,4)")]
         public decimal OD { get; set; }
@@ -25,7 +26,7 @@ namespace DataBase.Models.Operativo
         [Column(TypeName = "decimal(10,4)")]
         public decimal MaxWHP { get; set; }
 
-        [Column(TypeName = "decimal(10,4)")]
+        [Column(TypeName = "decimal(10,4)")] //8
         public decimal TemperaturaMaxima { get; set; }
 
         [Column(TypeName = "decimal(10,4)")]
@@ -34,7 +35,7 @@ namespace DataBase.Models.Operativo
         [Column(TypeName = "decimal(10,4)")]
         public decimal Diesel { get; set; }
 
-        [Column(TypeName = "decimal(10,4)")]
+        [Column(TypeName = "decimal(10,4)")] //11
         public decimal Solvente { get; set; }
 
         [Column(TypeName = "decimal(10,4)")]
@@ -44,7 +45,7 @@ namespace DataBase.Models.Operativo
 
         public decimal Divergente { get; set; }
 
-        [Column(TypeName = "decimal(10,4)")]
+        [Column(TypeName = "decimal(10,4)")] //14
         public decimal Nitrogeno { get; set; }
 
         [Column(TypeName = "decimal(10,4)")]
