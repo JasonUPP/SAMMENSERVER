@@ -59,5 +59,10 @@ namespace DataBase.Models.Operativo
 
         [Column(TypeName = "decimal(10,4)")]
         public decimal Total { get; set; }
+        public string Marca { get; set; }
+        public string Modelo { get; set; }
+        public string NumeroSerie { get; set; }
+
+
     }
 }

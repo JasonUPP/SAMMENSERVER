@@ -12,7 +12,7 @@ namespace DataBase.Models.Operativo
         public string Apellido { get; set; }
         public int Edad { get; set; }
         public string Direccion { get; set; }
-        public int NumeroCelular { get; set; } //cambiar a string
+        public string NumeroCelular { get; set; }
         public int NSS { get; set; }
         public string CursosAbordaje { get; set; }//posible arreglo o tabla
         public DateTime VigenciaCursosAbordaje { get; set; }
