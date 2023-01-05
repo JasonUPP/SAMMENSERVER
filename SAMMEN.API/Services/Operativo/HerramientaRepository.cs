@@ -19,7 +19,7 @@ namespace SAMMEN.API.Services.Operativo
         {
             var herramientas = await _context.Herramientas.ToListAsync();
             if (herramientas == null) return null;
-            List<HerramientaDto> herraientaList = new List<HerramientaDto>();
+            var herraientaList = new List<HerramientaDto>();
             herramientas.ForEach(
                 herramienta => herraientaList.Add( _mapper.Map<HerramientaDto>(herramienta)));            
             return herraientaList;

@@ -16,6 +16,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddScoped<IAuthRepository, AuthRepository>();
 builder.Services.AddScoped<IHerramientaRepository, HerramientaRepository>();
+builder.Services.AddScoped<IMedidaHerramientaRepository, MedidaHerramientaRepository>();
 builder.Services.AddScoped<ITokenService, TokenService>();
 builder.Services.AddCors(options => {
     options.AddPolicy(name: "cors",

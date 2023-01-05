@@ -1,17 +1,26 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using SAMMEN.API.Services.Operativo.Interfaces;
 
 namespace SAMMEN.API.Controllers
 {
-    [Route("api/[controller]")]
+    [Authorize]
     [ApiController]
+    [Route("api/[controller]")]
     public class MedidaHerramientaController : ControllerBase
     {
-        public MedidaHerramientaController() { }
+        private readonly IMedidaHerramientaRepository _medidaHerramientaRepository;
+        public MedidaHerramientaController(IMedidaHerramientaRepository medidaHerramientaRepository) 
+        {
+            _medidaHerramientaRepository= medidaHerramientaRepository;
+        }
 
         [HttpGet("GetMedidasHerramientas")]
         public async Task<IActionResult> Get()
         {
-            return StatusCode(500);
+            var medidasHerramientas = await _medidaHerramientaRepository.GetMedidasHerramientas();
+            if(medidasHerramientas == null) return StatusCode(500);
+            return Ok(medidasHerramientas);
         }
     }
 }

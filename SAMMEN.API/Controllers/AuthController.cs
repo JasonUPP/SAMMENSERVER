@@ -26,7 +26,7 @@ namespace SAMMEN.API.Controllers
         {
             userSignUpDto.Email = userSignUpDto.Email.ToLower();
             if (await _repository.UserExist(userSignUpDto.Email))
-                return BadRequest("Email ya en uso");
+                return BadRequest("El correo ya esta registrado");
 
             var newUser = _mapper.Map<User>(userSignUpDto);
             var createdUser = await _repository.SignUp(newUser, userSignUpDto.Password);

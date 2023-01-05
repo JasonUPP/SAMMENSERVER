@@ -9,6 +9,7 @@ namespace SAMMEN.API.Mappers
         public AutoMapperOperativo() 
         {
             CreateMap<Herramienta, HerramientaDto>();
+            CreateMap<MedidaHerramienta, MedidaHerramientaDto>();
         }
     }
 }
