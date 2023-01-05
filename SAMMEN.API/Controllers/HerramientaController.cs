@@ -1,5 +1,4 @@
-﻿using DataBase.Models.Operativo;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using SAMMEN.API.Services.Operativo.Interfaces;
 
 namespace SAMMEN.API.Controllers
