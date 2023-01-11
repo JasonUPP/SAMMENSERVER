@@ -14,15 +14,11 @@
         public int DiasCampo { get; set; }
         public int Acuse { get; set; }
         public string Firma { get; set; }
-        public string Ubicacion { get; set; } //solicitar tabla ubicacion
+        public int IdUbicacion { get; set; }
         public DateTime UltimoMtto { get; set; }
         public int DiasSinMtto { get; set; }
         public string Observaciones { get; set; }
         public string Tipo { get; set; }
-        //public int IdMedidaHerramienta { get; set; }      
-        //public virtual MedidaHerramienta MedidaHerramienta { get; set; }
-        //public string Marca { get; set; }
-        //public string Modelo { get; set; }
 
     }
 }

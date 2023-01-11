@@ -16,6 +16,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddScoped<IAuthRepository, AuthRepository>();
 builder.Services.AddScoped<IHerramientaRepository, HerramientaRepository>();
+builder.Services.AddScoped<IAuxRepository, AuxRepository>();
 builder.Services.AddScoped<IMedidaHerramientaRepository, MedidaHerramientaRepository>();
 builder.Services.AddScoped<ITokenService, TokenService>();
 builder.Services.AddCors(options => {
@@ -30,6 +31,8 @@ builder.Services.AddCors(options => {
 
 builder.Services.AddAutoMapper(typeof(AutoMapperProfile).Assembly);
 builder.Services.AddAutoMapper(typeof(AutoMapperOperativo).Assembly);
+builder.Services.AddAutoMapper(typeof(AutoMapperJson).Assembly);
+
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {

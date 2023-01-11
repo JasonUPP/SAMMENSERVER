@@ -1,4 +1,5 @@
-﻿using AuthJWT.Dtos.Operativo;
+﻿using AuthJWT.Dtos;
+using AuthJWT.Dtos.Operativo;
 using AutoMapper;
 using DataBase;
 using Microsoft.EntityFrameworkCore;
@@ -20,9 +21,7 @@ namespace SAMMEN.API.Services.Operativo
             var herramientas = await _context.Herramientas.ToListAsync();
             if (herramientas == null) return null;
             var herraientaList = new List<HerramientaDto>();
-            herramientas.ForEach(
-                herramienta => herraientaList.Add( _mapper.Map<HerramientaDto>(herramienta)));            
-            return herraientaList;
+            return herramientas.ConvertAll(hr => _mapper.Map<HerramientaDto>(hr));
         }
     }
 }

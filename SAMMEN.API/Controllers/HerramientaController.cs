@@ -10,17 +10,25 @@ namespace SAMMEN.API.Controllers
     public class HerramientaController : ControllerBase
     {
         private readonly IHerramientaRepository _herramientaRepository;
-        public HerramientaController(IHerramientaRepository herramientaRepository) 
+        private readonly IAuxRepository _auxRepository;
+        public HerramientaController(IHerramientaRepository herramientaRepository, IAuxRepository auxRepository) 
         {
             _herramientaRepository= herramientaRepository;
+            _auxRepository= auxRepository;
         }
 
         [HttpGet("GetHerramientas")]
         public async Task<IActionResult> Get()
         {
             var herramientas = await _herramientaRepository.GetHerramientas();
-            if (herramientas == null) return StatusCode(500);
-            return Ok(herramientas);
+            var ubicaciones = await _auxRepository.GetUbicaciones();            
+            if (herramientas == null || ubicaciones == null) return StatusCode(500);
+            return Ok(new
+                {
+                    herramientas,
+                    ubicaciones
+                }
+            );
         }
     }
 }

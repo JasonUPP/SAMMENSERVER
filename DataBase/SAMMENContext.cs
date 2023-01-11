@@ -12,7 +12,7 @@ namespace DataBase
         DbSet<HistorialHerramienta> HistorialHerramientas { get; set; }
         DbSet<Cursos> Cursos { get; set; }
         DbSet<Operador> Operadores { get; set; }
-        DbSet<Ubicacion> Ubicaciones { get; set; }
+        public DbSet<Ubicacion> Ubicaciones { get; set; }
         DbSet<MedidaHerramientaEspecial> MedidaHerramientaEspecials { get; set; }
     }
 }
