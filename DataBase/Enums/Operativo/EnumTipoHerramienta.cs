@@ -3,7 +3,7 @@
 namespace DataBase.Enums.Operativo
 {
     public enum EnumTipoHerramienta
-    {
+    { 
         [EnumMember(Value = "Ensambles Seguridad")]
         EnsamblesSeguridad = 1,
         [EnumMember(Value = "Barras Rigidas")]

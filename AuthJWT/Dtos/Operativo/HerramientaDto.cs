@@ -9,7 +9,7 @@
         public string NumeroInforme { get; set; }
         public DateTime FechaVencimiento { get; set; }
         public int Dias { get; set; }
-        public string Estatus { get; set; }
+        public int Estatus { get; set; }
         public DateTime FechaEntrega { get; set; }
         public int DiasCampo { get; set; }
         public int Acuse { get; set; }

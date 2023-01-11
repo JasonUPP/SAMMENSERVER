@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace DataBase.Models.Operativo
 {
-    class Ubicacion
+    public class Ubicacion
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -11,7 +11,7 @@ namespace DataBase.Models.Operativo
         public string Nombre { get; set; }
         public string Abreviatura { get; set; }
         public string Direccion { get; set; }
-        public int NumeroCelular { get; set; }
+        public string NumeroCelular { get; set; }
         public int CantidadUTF { get; set; }
     }
 }

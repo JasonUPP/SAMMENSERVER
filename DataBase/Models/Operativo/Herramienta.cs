@@ -20,7 +20,9 @@ namespace DataBase.Models.Operativo
         public int DiasCampo { get; set; }
         public int Acuse { get; set; }
         public string Firma { get; set; }
-        public string Ubicacion { get; set; } //solicitar tabla ubicacion
+        public int IdUbicacion { get; set; }
+        [ForeignKey("IdUbicacion")]
+        public virtual Ubicacion Ubicacion { get; set; }
         public DateTime UltimoMtto { get; set; }
         public int DiasSinMtto { get; set; }
         public string Observaciones { get; set; }

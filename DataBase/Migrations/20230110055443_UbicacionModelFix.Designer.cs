@@ -4,6 +4,7 @@ using DataBase;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataBase.Migrations
 {
     [DbContext(typeof(SAMMENContext))]
-    partial class SAMMENContextModelSnapshot : ModelSnapshot
+    [Migration("20230110055443_UbicacionModelFix")]
+    partial class UbicacionModelFix
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -88,9 +90,6 @@ namespace DataBase.Migrations
                     b.Property<int>("IdMedidaHerramienta")
                         .HasColumnType("int");
 
-                    b.Property<int>("IdUbicacion")
-                        .HasColumnType("int");
-
                     b.Property<string>("Marca")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -117,14 +116,16 @@ namespace DataBase.Migrations
                     b.Property<int>("Tipo")
                         .HasColumnType("int");
 
+                    b.Property<string>("Ubicacion")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime>("UltimoMtto")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
                     b.HasIndex("IdMedidaHerramienta");
-
-                    b.HasIndex("IdUbicacion");
 
                     b.ToTable("Herramientas");
                 });
@@ -515,15 +516,7 @@ namespace DataBase.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("DataBase.Models.Operativo.Ubicacion", "Ubicacion")
-                        .WithMany()
-                        .HasForeignKey("IdUbicacion")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("MedidaHerramienta");
-
-                    b.Navigation("Ubicacion");
                 });
 
             modelBuilder.Entity("DataBase.Models.Operativo.HistorialHerramienta", b =>
