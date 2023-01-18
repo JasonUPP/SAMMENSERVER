@@ -53,12 +53,12 @@ namespace DataBase.Models.Operativo
 
         [Column(TypeName = "decimal(10,4)")]
         public decimal Agua { get; set; }
+
+        [Column(TypeName = "decimal(10,4)")]
+        public decimal Inhibidor { get; set; }
         public int HorasOperativas { get; set; }
         public int HorasEfectivas { get; set; }
         public string Notas { get; set; }
-
-        [Column(TypeName = "decimal(10,4)")]
-        public decimal Total { get; set; }
         public string Marca { get; set; }
         public string Modelo { get; set; }
         public string NumeroSerie { get; set; }

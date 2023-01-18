@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using AuthJWT.Dtos.Operativo;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SAMMEN.API.Services.Operativo.Interfaces;
 
@@ -30,5 +31,24 @@ namespace SAMMEN.API.Controllers
                 }
             );
         }
+
+        [HttpPost("NewHerramienta")]
+        public async Task<IActionResult> NewHerramienta(HerramientaDto herramientaDto)
+        {
+            return Ok();
+        }
+
+        [HttpDelete("DeleteHerramienta/{id}")]
+        public async Task<IActionResult> DeleteHerramienta(int Id)
+        {
+            return Ok();
+        }
+
+        [HttpPut("UpdateHerramienta/{data}")]
+        public async Task<IActionResult> UpdateHerramienta(HerramientaDto herramientaDto)
+        {
+            return Ok();
+        }
+
     }
 }
