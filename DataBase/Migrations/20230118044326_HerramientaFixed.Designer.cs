@@ -4,6 +4,7 @@ using DataBase;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataBase.Migrations
 {
     [DbContext(typeof(SAMMENContext))]
-    partial class SAMMENContextModelSnapshot : ModelSnapshot
+    [Migration("20230118044326_HerramientaFixed")]
+    partial class HerramientaFixed
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -85,6 +87,9 @@ namespace DataBase.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("IdMedidaHerramienta")
+                        .HasColumnType("int");
+
                     b.Property<int>("IdUbicacion")
                         .HasColumnType("int");
 
@@ -110,6 +115,8 @@ namespace DataBase.Migrations
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("IdMedidaHerramienta");
 
                     b.HasIndex("IdUbicacion");
 
@@ -497,11 +504,19 @@ namespace DataBase.Migrations
 
             modelBuilder.Entity("DataBase.Models.Operativo.Herramienta", b =>
                 {
+                    b.HasOne("DataBase.Models.Operativo.MedidaHerramienta", "MedidaHerramienta")
+                        .WithMany()
+                        .HasForeignKey("IdMedidaHerramienta")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("DataBase.Models.Operativo.Ubicacion", "Ubicacion")
                         .WithMany()
                         .HasForeignKey("IdUbicacion")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("MedidaHerramienta");
 
                     b.Navigation("Ubicacion");
                 });

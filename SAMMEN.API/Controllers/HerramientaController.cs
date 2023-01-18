@@ -33,20 +33,23 @@ namespace SAMMEN.API.Controllers
         }
 
         [HttpPost("NewHerramienta")]
-        public async Task<IActionResult> NewHerramienta(HerramientaDto herramientaDto)
+        public async Task<IActionResult> NewHerramienta([FromBody] HerramientaDto herramientaDto)
         {
+            var x = await _herramientaRepository.NewHerramienta(herramientaDto);
             return Ok();
         }
 
         [HttpDelete("DeleteHerramienta/{id}")]
-        public async Task<IActionResult> DeleteHerramienta(int Id)
+        public async Task<IActionResult> DeleteHerramienta([FromBody] int Id)
         {
+            var x = await _herramientaRepository.DeleteHerramienta(Id);
             return Ok();
         }
 
         [HttpPut("UpdateHerramienta/{data}")]
-        public async Task<IActionResult> UpdateHerramienta(HerramientaDto herramientaDto)
+        public async Task<IActionResult> UpdateHerramienta([FromBody] HerramientaDto herramientaDto)
         {
+            var x = await _herramientaRepository.UpdateHerramienta(herramientaDto);
             return Ok();
         }
 

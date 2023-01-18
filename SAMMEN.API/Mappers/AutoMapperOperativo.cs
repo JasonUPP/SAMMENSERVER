@@ -8,7 +8,8 @@ namespace SAMMEN.API.Mappers
     {
         public AutoMapperOperativo() 
         {
-            CreateMap<Herramienta, HerramientaDto>();
+            CreateMap<Herramienta, HerramientaDto>();//Herramienta a dto
+            CreateMap<HerramientaDto, Herramienta>();//dto a herramienta
             CreateMap<MedidaHerramienta, MedidaHerramientaDto>();
         }
     }

@@ -18,7 +18,7 @@
         public DateTime UltimoMtto { get; set; }
         public int DiasSinMtto { get; set; }
         public string Observaciones { get; set; }
-        public string Tipo { get; set; }
+        public int Tipo { get; set; }
 
     }
 }

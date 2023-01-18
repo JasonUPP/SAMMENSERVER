@@ -27,10 +27,5 @@ namespace DataBase.Models.Operativo
         public int DiasSinMtto { get; set; }
         public string Observaciones { get; set; }
         public EnumTipoHerramienta Tipo { get; set; }
-        public int IdMedidaHerramienta { get; set; }
-        [ForeignKey("IdMedidaHerramienta")]
-        public virtual MedidaHerramienta MedidaHerramienta { get; set; }
-        public string Marca { get; set; }
-        public string Modelo { get; set; }
     }
 }
