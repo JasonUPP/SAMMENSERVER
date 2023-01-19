@@ -22,7 +22,7 @@ namespace DataBase.Models.Operativo
         public string Firma { get; set; }
         public int IdUbicacion { get; set; }
         [ForeignKey("IdUbicacion")]
-        public virtual Ubicacion Ubicacion { get; set; }
+        //public virtual Ubicacion Ubicacion { get; set; }
         public DateTime UltimoMtto { get; set; }
         public int DiasSinMtto { get; set; }
         public string Observaciones { get; set; }

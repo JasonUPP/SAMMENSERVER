@@ -4,10 +4,14 @@ using DataBase;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using NLog;
 using SAMMEN.API.Mappers;
 using SAMMEN.API.Services.Operativo;
 using SAMMEN.API.Services.Operativo.Interfaces;
 using System.Text;
+
+var loger = 
+    NLog.LogManager.Setup().LoadConfigurationF
 
 var builder = WebApplication.CreateBuilder(args);
 

@@ -21,37 +21,62 @@ namespace SAMMEN.API.Controllers
         [HttpGet("GetHerramientas")]
         public async Task<IActionResult> Get()
         {
-            var herramientas = await _herramientaRepository.GetHerramientas();
-            var ubicaciones = await _auxRepository.GetUbicaciones();            
-            if (herramientas == null || ubicaciones == null) return StatusCode(500);
-            return Ok(new
-                {
-                    herramientas,
-                    ubicaciones
-                }
-            );
+            try
+            {
+                var herramientas = await _herramientaRepository.GetHerramientas();
+                var ubicaciones = await _auxRepository.GetUbicaciones();            
+                if (herramientas == null || ubicaciones == null) throw new Exception("Error al obtener Herramientas");
+                return Ok(new { herramientas, ubicaciones });
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         [HttpPost("NewHerramienta")]
         public async Task<IActionResult> NewHerramienta([FromBody] HerramientaDto herramientaDto)
         {
-            var x = await _herramientaRepository.NewHerramienta(herramientaDto);
-            return Ok();
+            try
+            {
+                var res = await _herramientaRepository.NewHerramienta(herramientaDto);
+                if (res == null) throw new Exception("Error al agregar Herramienta");
+                return Ok(res);
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         [HttpDelete("DeleteHerramienta/{id}")]
-        public async Task<IActionResult> DeleteHerramienta([FromBody] int Id)
+        public async Task<IActionResult> DeleteHerramienta([FromRoute] int Id)
         {
-            var x = await _herramientaRepository.DeleteHerramienta(Id);
-            return Ok();
+            try
+            {
+                var res = await _herramientaRepository.DeleteHerramienta(Id);
+                if (res == null) throw new Exception("Error al eliminar Herramienta");
+                return Ok(res);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
-        [HttpPut("UpdateHerramienta/{data}")]
+        [HttpPut("UpdateHerramienta")]
         public async Task<IActionResult> UpdateHerramienta([FromBody] HerramientaDto herramientaDto)
         {
-            var x = await _herramientaRepository.UpdateHerramienta(herramientaDto);
-            return Ok();
+            try
+            {
+                var res = await _herramientaRepository.UpdateHerramienta(herramientaDto);
+                if (res == null) throw new Exception("Error al actualizar Herramienta");                
+                return Ok(res);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
-
     }
 }

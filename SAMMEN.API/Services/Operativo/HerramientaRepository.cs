@@ -1,4 +1,5 @@
-﻿using AuthJWT.Dtos.Operativo;
+﻿using AuthJWT.Dtos;
+using AuthJWT.Dtos.Operativo;
 using AutoMapper;
 using DataBase;
 using DataBase.Models.Operativo;
@@ -19,59 +20,66 @@ namespace SAMMEN.API.Services.Operativo
 
         public async Task<List<HerramientaDto>> GetHerramientas()
         {
-            var herramientas = await _context.Herramientas.ToListAsync();
-            if (herramientas == null) return null;
-            var herraientaList = new List<HerramientaDto>();
-            return herramientas.ConvertAll(hr => _mapper.Map<HerramientaDto>(hr));
+            try
+            {
+                var herramientas = await _context.Herramientas.ToListAsync();
+                if (herramientas == null) return null;
+                var herraientaList = new List<HerramientaDto>();
+                return herramientas.ConvertAll(hr => _mapper.Map<HerramientaDto>(hr));
+            }
+            catch(Exception ex)
+            {
+                return null;
+            }
+            
         }
 
-        public async Task<object> NewHerramienta(HerramientaDto herramientaDto)//cambiar el tipo de task
+        public async Task<ResponseDto> NewHerramienta(HerramientaDto herramientaDto)
         {
             try
             {
                 var herramienta = _mapper.Map<Herramienta>(herramientaDto);
                 await _context.AddAsync(herramienta);
                 await _context.SaveChangesAsync();
-                //saber que regresar si todo sale bien y cuando no
+                return new ResponseDto(false, "Herramienta añadida correctamente");
             }
             catch(Exception ex)
             {
-                var x = ex.InnerException;
+                return null;
             }
-            return null;
         }
 
-        public async Task<object> DeleteHerramienta(int id)
+        public async Task<ResponseDto> DeleteHerramienta(int id)
         {
             try
             {
                 var herramienta = await _context.Herramientas.Where(w => w.Id == id).FirstOrDefaultAsync();
-                if (herramienta == null) throw new Exception("Herramienta no encontrada");
+                if (herramienta == null) return null;
                 _context.Remove(herramienta);
                 await _context.SaveChangesAsync();
+                return new ResponseDto(false, "Herramienta eliminada correctamente");
             }
             catch(Exception ex)
             {
-
+                return null;
             }
-            return null;
         }
 
-        public async Task<object> UpdateHerramienta(HerramientaDto herramientaDto)
+        public async Task<ResponseDto> UpdateHerramienta(HerramientaDto herramientaDto)
         {
             try
             {
-                var herramienta = await _context.Herramientas.Where(w => w.Id == herramientaDto.Id).FirstOrDefaultAsync();
-                if (herramienta == null) throw new Exception("Herramienta no encontrada");
-                //falta mapear de dto a herramienta
-                _context.Update(herramienta);
+                var herramienta = await _context.Herramientas.AsNoTracking().Where(w => w.Id == herramientaDto.Id).FirstOrDefaultAsync();
+                if (herramienta == null) return null;
+                var herramientaUpdated = _mapper.Map<Herramienta>(herramientaDto);
+                _context.Update(herramientaUpdated);
                 await _context.SaveChangesAsync();
+                return new ResponseDto(false, "Herramienta actualizada correctamente");
             }
             catch (Exception ex)
             {
-
+                return null;
             }
-            return null;
         }
     }
 }
