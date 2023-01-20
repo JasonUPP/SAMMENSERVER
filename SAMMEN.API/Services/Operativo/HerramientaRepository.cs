@@ -12,10 +12,12 @@ namespace SAMMEN.API.Services.Operativo
     {
         private readonly SAMMENContext _context;
         private readonly IMapper _mapper;
-        public HerramientaRepository(SAMMENContext context, IMapper mapper) 
+        private readonly ILogger<IHerramientaRepository> _logger;
+        public HerramientaRepository(SAMMENContext context, IMapper mapper, ILogger<IHerramientaRepository> logger) 
         {
             _context = context;
             _mapper = mapper;
+            _logger = logger;
         }
 
         public async Task<List<HerramientaDto>> GetHerramientas()
@@ -29,6 +31,7 @@ namespace SAMMEN.API.Services.Operativo
             }
             catch(Exception ex)
             {
+                _logger.LogError(ex, "GetHerramientas", ex.Message);
                 return null;
             }
             
@@ -45,6 +48,7 @@ namespace SAMMEN.API.Services.Operativo
             }
             catch(Exception ex)
             {
+                _logger.LogError(ex, "NewHerramienta", ex.Message);
                 return null;
             }
         }
@@ -54,13 +58,14 @@ namespace SAMMEN.API.Services.Operativo
             try
             {
                 var herramienta = await _context.Herramientas.Where(w => w.Id == id).FirstOrDefaultAsync();
-                if (herramienta == null) return null;
+                if (herramienta == null) throw new Exception("Herramienta no encontrada");
                 _context.Remove(herramienta);
                 await _context.SaveChangesAsync();
                 return new ResponseDto(false, "Herramienta eliminada correctamente");
             }
             catch(Exception ex)
             {
+                _logger.LogError(ex, "DeleteHerramienta", ex.Message);
                 return null;
             }
         }
@@ -70,7 +75,7 @@ namespace SAMMEN.API.Services.Operativo
             try
             {
                 var herramienta = await _context.Herramientas.AsNoTracking().Where(w => w.Id == herramientaDto.Id).FirstOrDefaultAsync();
-                if (herramienta == null) return null;
+                if (herramienta == null) throw new Exception("Herramienta no encontrada");
                 var herramientaUpdated = _mapper.Map<Herramienta>(herramientaDto);
                 _context.Update(herramientaUpdated);
                 await _context.SaveChangesAsync();
@@ -78,6 +83,7 @@ namespace SAMMEN.API.Services.Operativo
             }
             catch (Exception ex)
             {
+                _logger.LogError(ex, "UpdateHerramienta", ex.Message);
                 return null;
             }
         }
