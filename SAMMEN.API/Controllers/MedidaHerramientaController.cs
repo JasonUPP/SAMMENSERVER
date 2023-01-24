@@ -38,7 +38,7 @@ namespace SAMMEN.API.Controllers
             {
                 var res = await _medidaHerramientaRepository.NewMedidaHerramienta(medidaHerramientaDto);
                 if (res == null) throw new Exception("Error al agregar Medida Herramienta");
-                return Ok();
+                return Ok(res);
             }
             catch (Exception ex)
             {
@@ -53,7 +53,7 @@ namespace SAMMEN.API.Controllers
             {
                 var res = await _medidaHerramientaRepository.UpdateMedidaHerramienta(medidaHerramientaDto);
                 if (res == null) throw new Exception("Error al actualizar Medida Herramienta");
-                return Ok();
+                return Ok(res);
             }
             catch (Exception ex)
             {
@@ -68,7 +68,7 @@ namespace SAMMEN.API.Controllers
             {
                 var res = await _medidaHerramientaRepository.DeleteMedidaHerramienta(id);
                 if (res == null) throw new Exception("Error al eliminar Medida Herramienta");
-                return Ok();
+                return Ok(res);
             }
             catch (Exception ex)
             {

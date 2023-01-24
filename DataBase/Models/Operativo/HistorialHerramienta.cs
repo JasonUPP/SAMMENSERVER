@@ -63,6 +63,5 @@ namespace DataBase.Models.Operativo
         public string Modelo { get; set; }
         public string NumeroSerie { get; set; }
 
-
     }
 }

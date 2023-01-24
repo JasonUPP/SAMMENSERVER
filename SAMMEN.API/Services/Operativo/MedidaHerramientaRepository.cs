@@ -27,6 +27,7 @@ namespace SAMMEN.API.Services.Operativo
             try
             {
                 var medidasHerramientas = await _context.MedidaHerramientas.ToListAsync();
+                //var medidaHerramientaEsp = await _context.MedidaHerramientaEspecials.ToListAsync();
                 if (medidasHerramientas == null) throw new Exception("Error al obtener medidas de herramientas");
                 return medidasHerramientas.ConvertAll(mhr => _mapper.Map<MedidaHerramientaDto>(mhr));
             }
@@ -34,12 +35,7 @@ namespace SAMMEN.API.Services.Operativo
             {
                 _logger.LogError(ex, "GetMedidasHerramientas", ex.Message);
                 return null;
-            }
-            //var medidasHerramientasList = new List<MedidaHerramientaDto>();
-            //medidasHerramientas.ForEach(
-            //    medidaHerramienta => medidasHerramientasList.Add(
-            //        _mapper.Map<MedidaHerramientaDto>(medidaHerramienta)));
-            //return medidasHerramientasList;            
+            }            
         }
         public async Task<ResponseDto> DeleteMedidaHerramienta(int id)
         {

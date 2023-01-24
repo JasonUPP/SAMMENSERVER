@@ -11,11 +11,11 @@
         public string BalinPaso { get; set; }        
         public decimal Longitud { get; set; }
         public string NumeroSerie { get; set; }
-        public string Estatus { get; set; }        
+        public int Estatus { get; set; }        
         public decimal TensionMaxima { get; set; }        
         public decimal PresionMaxima { get; set; }
         public string BalinSub { get; set; }
         public string BalinDesconector { get; set; }
-        public string Tipo { get; set; }
+        public int Tipo { get; set; }
     }
 }
