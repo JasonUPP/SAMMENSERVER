@@ -20,7 +20,7 @@ namespace SAMMEN.API.Services.Operativo
             _mapper = mapper;
             _logger = logger;
         }
-        public async Task<List<HistorialHerramientaDto>> GetHistorialHerramienta()
+        public async Task<List<HistorialHerramientaDto>> Get()
         {
             try
             {
@@ -35,7 +35,7 @@ namespace SAMMEN.API.Services.Operativo
             }
         }
 
-        public async Task<ResponseDto> AddHistorialHerramienta(HistorialHerramientaDto historialHDto)
+        public async Task<ResponseDto> Add(HistorialHerramientaDto historialHDto)
         {
             try
             {
@@ -51,7 +51,7 @@ namespace SAMMEN.API.Services.Operativo
             }
         }
 
-        public async Task<ResponseDto> DeleteHistorialHerramienta(int id)
+        public async Task<ResponseDto> Delete(int id)
         {
             try
             {
@@ -68,7 +68,7 @@ namespace SAMMEN.API.Services.Operativo
             }
         }
 
-        public async Task<ResponseDto> UpdateHistorialHerramienta(HistorialHerramientaDto historialHerramientaDto)
+        public async Task<ResponseDto> Update(HistorialHerramientaDto historialHerramientaDto)
         {
             try
             {

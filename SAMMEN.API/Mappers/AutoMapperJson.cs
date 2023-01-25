@@ -9,6 +9,7 @@ namespace SAMMEN.API.Mappers
         public AutoMapperJson() 
         {
             CreateMap<Ubicacion,JsonDto>();
+            CreateMap<Operador, JsonDto>();
         }
     }
 }

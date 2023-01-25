@@ -18,14 +18,15 @@ namespace SAMMEN.API.Controllers
             _auxRepository = auxRepository;
         }
 
-        [HttpGet("GetHistorialHerramienta")]
+        [HttpGet("Get")]
         public async Task<IActionResult> Get()
         {
             try
             {
-                var herramientas = await _historialRepository.GetHistorialHerramienta();
-                if (herramientas == null) throw new Exception("Error al obtener Historial Herramienta");
-                return Ok(new { herramientas });
+                var historialHerramientas = await _historialRepository.Get();
+                var operadores = await _auxRepository.GetOperadores();
+                if (historialHerramientas == null) throw new Exception("Error al obtener Historial Herramienta");
+                return Ok(new { historialHerramientas, operadores });
             }
             catch (Exception ex)
             {
@@ -33,12 +34,12 @@ namespace SAMMEN.API.Controllers
             }
         }
 
-        [HttpPost("AddHistorialHerramienta")]
-        public async Task<IActionResult> AddHistorialHerramienta([FromBody] HistorialHerramientaDto historialHDto)
+        [HttpPost("Add")]
+        public async Task<IActionResult> Add([FromBody] HistorialHerramientaDto historialHDto)
         {
             try
             {
-                var res = await _historialRepository.AddHistorialHerramienta(historialHDto);
+                var res = await _historialRepository.Add(historialHDto);
                 if (res == null) throw new Exception("Error al agregar Historial Herramienta");
                 return Ok(res);
             }
@@ -48,12 +49,12 @@ namespace SAMMEN.API.Controllers
             }
         }
 
-        [HttpDelete("DeleteHistorialHerramienta/{id}")]
-        public async Task<IActionResult> DeleteHistorialHerramienta([FromRoute] int Id)
+        [HttpDelete("Delete/{id}")]
+        public async Task<IActionResult> Delete([FromRoute] int Id)
         {
             try
             {
-                var res = await _historialRepository.DeleteHistorialHerramienta(Id);
+                var res = await _historialRepository.Delete(Id);
                 if (res == null) throw new Exception("Error al eliminar Historial Herramienta");
                 return Ok(res);
             }
@@ -63,12 +64,12 @@ namespace SAMMEN.API.Controllers
             }
         }
 
-        [HttpPut("UpdateHistorialHerramienta")]
-        public async Task<IActionResult> UpdateHistorialHerramienta([FromBody] HistorialHerramientaDto historialHerramientaDto)
+        [HttpPut("Update")]
+        public async Task<IActionResult> Update([FromBody] HistorialHerramientaDto historialHerramientaDto)
         {
             try
             {
-                var res = await _historialRepository.UpdateHistorialHerramienta(historialHerramientaDto);
+                var res = await _historialRepository.Update(historialHerramientaDto);
                 if (res == null) throw new Exception("Error al actualizar Historial Herramienta");
                 return Ok(res);
             }
