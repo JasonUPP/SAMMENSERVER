@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SAMMEN.API.Services.Operativo.Interfaces;
 
-namespace SAMMEN.API.Controllers
+namespace SAMMEN.API.Controllers.Operativo
 {
     [Authorize]
     [ApiController]
@@ -11,9 +11,9 @@ namespace SAMMEN.API.Controllers
     public class MedidaHerramientaController : ControllerBase
     {
         private readonly IMedidaHerramientaRepository _medidaHerramientaRepository;
-        public MedidaHerramientaController(IMedidaHerramientaRepository medidaHerramientaRepository) 
+        public MedidaHerramientaController(IMedidaHerramientaRepository medidaHerramientaRepository)
         {
-            _medidaHerramientaRepository= medidaHerramientaRepository;
+            _medidaHerramientaRepository = medidaHerramientaRepository;
         }
 
         [HttpGet("GetMedidasHerramientas")]
@@ -22,10 +22,10 @@ namespace SAMMEN.API.Controllers
             try
             {
                 var medidasHerramientas = await _medidaHerramientaRepository.GetMedidasHerramientas();
-                if(medidasHerramientas == null) throw new Exception("Error al obtener Medidas de Herramientas");
-                return Ok(medidasHerramientas);                
+                if (medidasHerramientas == null) throw new Exception("Error al obtener Medidas de Herramientas");
+                return Ok(medidasHerramientas);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return BadRequest(ex.Message);
             }

@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SAMMEN.API.Services.Operativo.Interfaces;
 
-namespace SAMMEN.API.Controllers
+namespace SAMMEN.API.Controllers.Operativo
 {
     [Authorize]
     [ApiController]
@@ -12,10 +12,10 @@ namespace SAMMEN.API.Controllers
     {
         private readonly IHerramientaRepository _herramientaRepository;
         private readonly IAuxRepository _auxRepository;
-        public HerramientaController(IHerramientaRepository herramientaRepository, IAuxRepository auxRepository) 
+        public HerramientaController(IHerramientaRepository herramientaRepository, IAuxRepository auxRepository)
         {
-            _herramientaRepository= herramientaRepository;
-            _auxRepository= auxRepository;
+            _herramientaRepository = herramientaRepository;
+            _auxRepository = auxRepository;
         }
 
         [HttpGet("GetHerramientas")]
@@ -24,11 +24,11 @@ namespace SAMMEN.API.Controllers
             try
             {
                 var herramientas = await _herramientaRepository.GetHerramientas();
-                var ubicaciones = await _auxRepository.GetUbicaciones();            
+                var ubicaciones = await _auxRepository.GetUbicaciones();
                 if (herramientas == null || ubicaciones == null) throw new Exception("Error al obtener Herramientas");
                 return Ok(new { herramientas, ubicaciones });
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return BadRequest(ex.Message);
             }
@@ -43,7 +43,7 @@ namespace SAMMEN.API.Controllers
                 if (res == null) throw new Exception("Error al agregar Herramienta");
                 return Ok(res);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return BadRequest(ex.Message);
             }
@@ -70,7 +70,7 @@ namespace SAMMEN.API.Controllers
             try
             {
                 var res = await _herramientaRepository.UpdateHerramienta(herramientaDto);
-                if (res == null) throw new Exception("Error al actualizar Herramienta");                
+                if (res == null) throw new Exception("Error al actualizar Herramienta");
                 return Ok(res);
             }
             catch (Exception ex)

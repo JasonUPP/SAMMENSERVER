@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SAMMEN.API.Services.Operativo.Interfaces;
 
-namespace SAMMEN.API.Controllers
+namespace SAMMEN.API.Controllers.Operativo
 {
     [Authorize]
     [ApiController]
