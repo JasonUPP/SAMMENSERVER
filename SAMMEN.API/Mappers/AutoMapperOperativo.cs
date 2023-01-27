@@ -16,6 +16,8 @@ namespace SAMMEN.API.Mappers
             CreateMap<HistorialHerramientaDto, HistorialHerramienta>();
             CreateMap<Operador, OperadorDto>();
             CreateMap<OperadorDto, Operador>();
+            CreateMap<UbicacionDto, Ubicacion>();
+            CreateMap<Ubicacion, UbicacionDto>();
         }
     }
 }
