@@ -21,8 +21,6 @@ namespace DataBase.Models.Operativo
         public int Acuse { get; set; }
         public string Firma { get; set; }
         public int IdUbicacion { get; set; }
-        [ForeignKey("IdUbicacion")]
-        //public virtual Ubicacion Ubicacion { get; set; }
         public DateTime UltimoMtto { get; set; }
         public int DiasSinMtto { get; set; }
         public string Observaciones { get; set; }

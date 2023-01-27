@@ -28,8 +28,6 @@ namespace DataBase.Models.Operativo
         [Column(TypeName = "decimal(10,4)")]
         public decimal TensionMaxima { get; set; }
         public int IdUbicacion { get; set; }
-        [ForeignKey("IdUbicacion")]
-        public virtual Ubicacion Ubicacion { get; set; }
         public string NumeroInforme { get; set; }
         public DateTime FechaVencimiento { get; set; }
         public int Dias { get; set; }
