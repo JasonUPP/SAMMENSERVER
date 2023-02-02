@@ -8,5 +8,6 @@
         public string Direccion { get; set; }
         public string NumeroCelular { get; set; }
         public int CantidadUTF { get; set; }
+        public string Caja { get; set;}
     }
 }
