@@ -10,11 +10,11 @@ namespace SAMMEN.API.Controllers.Operativo
     [Route("api/[controller]")]
     public class OperadorController : ControllerBase
     {
-        private readonly IOperador _operadorRepository;
+        private readonly IOperador _operadorRepository;        
 
         public OperadorController(IOperador operadorRepository)
         {
-            _operadorRepository= operadorRepository;
+            _operadorRepository = operadorRepository;
         }
 
         [HttpGet("Get")]

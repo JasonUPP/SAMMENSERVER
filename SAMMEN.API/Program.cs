@@ -28,6 +28,7 @@ try
     builder.Services.AddScoped<IHistorialHerramienta, HistorialHerramientaRepository>();
     builder.Services.AddScoped<IOperador, OperadorRepository>();
     builder.Services.AddScoped<IUbicacion, UbicacionRepository>();
+    builder.Services.AddScoped<ICursosRepository, CursosRepository>();
     builder.Services.AddScoped<ITokenService, TokenService>();
     builder.Services.AddCors(options => {
         options.AddPolicy(name: "cors",

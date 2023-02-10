@@ -10,9 +10,10 @@ namespace DataBase
         public DbSet<Herramienta> Herramientas { get; set; }
         public DbSet<MedidaHerramienta> MedidaHerramientas{ get; set; }        
         public DbSet<HistorialHerramienta> HistorialHerramientas { get; set; }
-        DbSet<Cursos> Cursos { get; set; }
+        public DbSet<Cursos> Cursos { get; set; }
         public DbSet<Operador> Operadores { get; set; }
         public DbSet<Ubicacion> Ubicaciones { get; set; }
         public DbSet<MedidaHerramientaEspecial> MedidaHerramientaEspecials { get; set; }
+        public DbSet<OperadorCurso> OperadorCursos { get; set; }
     }
 }
