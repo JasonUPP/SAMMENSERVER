@@ -9,8 +9,6 @@
         public string Direccion { get; set; }
         public string NumeroCelular { get; set; }
         public int NSS { get; set; }
-        public string CursosAbordaje { get; set; }//posible arreglo o tabla
-        public DateTime VigenciaCursosAbordaje { get; set; }
         public string CursosSSPA { get; set; }//posible arreglo o tabla
         public DateTime VigenciaCursosSSPA { get; set; }
         public string CursosTecnicos { get; set; }

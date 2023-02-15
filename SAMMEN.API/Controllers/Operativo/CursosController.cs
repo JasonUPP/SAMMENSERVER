@@ -49,13 +49,28 @@ namespace SAMMEN.API.Controllers.Operativo
         }
 
         [HttpGet("GetCursosPorOperador/{id}")]
-        public async Task<IActionResult> CursosPorOperador([FromRoute] int operadorId)
+        public async Task<IActionResult> CursosPorOperador([FromRoute] int id)
         {
             try
             {
-                var cursosPoroperador = await _cursosRepository.GetCursosByOperador(operadorId);
+                var cursosPoroperador = await _cursosRepository.GetCursosByOperador(id);
                 if (cursosPoroperador == null) throw new Exception("Error al obtener cursos por operador");
                 return Ok(cursosPoroperador);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpPost("NewCursosPorOperador")]
+        public async Task<IActionResult> NewCursosPorOperador([FromBody] NewCursosDto body)
+        {
+            try
+            {
+                var res = await _cursosRepository.NewCursosPorOperador(body);
+                if (res == null) throw new Exception("Error al agregar cursos");
+                return Ok(res);
             }
             catch (Exception ex)
             {

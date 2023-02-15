@@ -1,4 +1,5 @@
-﻿using AuthJWT.Dtos.Operativo;
+﻿using AuthJWT.Dtos;
+using AuthJWT.Dtos.Operativo;
 using DataBase;
 using DataBase.Models.Operativo;
 using Microsoft.EntityFrameworkCore;
@@ -51,14 +52,17 @@ namespace SAMMEN.API.Services.Operativo
         {
             try
             {
+
+                var relaciones = await _context.OperadorCursos.ToListAsync();
+                if (relaciones == null) throw new Exception("Relacion Operador Curso no encontrada");
+
+                var cursosDtoList = new List<CursosDto>();
+                if(relaciones.Count == 0) return cursosDtoList;                
+                var operCursoFiltered = relaciones.Where(w => w.IdOperador == operadorId).ToList();
+                if (operCursoFiltered.Count() == 0) return cursosDtoList;
+
                 var cursos = await _context.Cursos.ToListAsync();
                 if (cursos == null) throw new Exception("Cursos no encontrados");
-                var operCurso = await _context.OperadorCursos.ToListAsync();
-                if (operCurso == null) throw new Exception("Relacion Operador Curso no encontrada");
-                var cursosDtoList = new List<CursosDto>();
-                if(operCurso.Count == 0) return cursosDtoList;                
-                var operCursoFiltered = operCurso.Where(w => w.IdOperador == operadorId);//VER QUE HACER CUANDO NO HAY NADA
-
                 cursos.ForEach(curso =>
                 {
                     OperadorCurso operCursoActual = operCursoFiltered.Where(w => w.IdCurso == curso.Id).FirstOrDefault();
@@ -84,5 +88,35 @@ namespace SAMMEN.API.Services.Operativo
                 return null;
             }
         }
+
+        public async Task<ResponseDto> NewCursosPorOperador(NewCursosDto body)
+        {
+            try
+            {
+                var relacionList = new List<OperadorCurso>();
+                body.CursosDtos.ForEach(curso =>
+                {
+                    var relacion = new OperadorCurso()
+                    {
+                        IdOperador = body.IdOperador,
+                        IdCurso = curso.Item,
+                        Vigencia= curso.Vigencia,
+                        Estatus= curso.Estatus,
+                    };
+                    relacionList.Add(relacion);
+                });
+
+                await _context.AddRangeAsync(relacionList);
+                await _context.SaveChangesAsync();
+                return new ResponseDto(false, "Cursos añadidos correctamente");
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "NewCursosPorOperador", ex.Message);
+                return null;
+            }
+        }
+
+        //create the update path
     }
 }
