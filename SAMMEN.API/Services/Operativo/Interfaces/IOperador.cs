@@ -9,5 +9,6 @@ namespace SAMMEN.API.Services.Operativo.Interfaces
         public Task<ResponseDto> New(OperadorDto OperadorDto);
         public Task<ResponseDto> Delete(int id);
         public Task<ResponseDto> Update(OperadorDto OperadorDto);
+        public Task<ResponseDto> UpdateEstatus(OperadorEstatusDto operadorEstatusDto);
     }
 }

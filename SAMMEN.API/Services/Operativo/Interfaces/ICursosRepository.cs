@@ -9,6 +9,7 @@ namespace SAMMEN.API.Services.Operativo.Interfaces
         public Task<List<Cursos>> GetCursos();
         public Task<List<OperadorCurso>> GetOperadorCursoRelation();
         public Task<List<CursosDto>> GetCursosByOperador(int operadorId);
-        public Task<ResponseDto> NewCursosPorOperador(NewCursosDto body);
+        public Task<ResponseDto> NewCursosPorOperador(BodyCursosDto body);
+        public Task<ResponseDto> UpdateCursosPorOperador(BodyCursosDto body);
     }
 }

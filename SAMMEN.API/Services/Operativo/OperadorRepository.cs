@@ -8,7 +8,7 @@ using SAMMEN.API.Services.Operativo.Interfaces;
 
 namespace SAMMEN.API.Services.Operativo
 {
-    public class OperadorRepository : IOperador
+    public class OperadorRepository : IOperador 
     {
         private readonly SAMMENContext _context;
         private readonly IMapper _mapper;
@@ -82,6 +82,24 @@ namespace SAMMEN.API.Services.Operativo
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Update Operador", ex.Message);
+                return null;
+            }
+        }
+
+        public async Task<ResponseDto> UpdateEstatus(OperadorEstatusDto operadorEstatusDto)
+        {
+            try
+            {
+                var operador = await _context.Operadores.AsNoTracking().FirstOrDefaultAsync(op => op.Id == operadorEstatusDto.IdOperador);
+                if (operador == null) throw new Exception("Operador no encontrado");
+                operador.Estatus = operadorEstatusDto.Estatus;
+                _context.Update(operador);
+                await _context.SaveChangesAsync();
+                return new ResponseDto(false, "Estatus de operador actualizado correctamente");
+            }
+            catch(Exception ex)
+            {
+                _logger.LogError(ex, "UpdateEstatus", ex.Message);
                 return null;
             }
         }

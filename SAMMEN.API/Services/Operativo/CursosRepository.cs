@@ -89,7 +89,7 @@ namespace SAMMEN.API.Services.Operativo
             }
         }
 
-        public async Task<ResponseDto> NewCursosPorOperador(NewCursosDto body)
+        public async Task<ResponseDto> NewCursosPorOperador(BodyCursosDto body)
         {
             try
             {
@@ -117,6 +117,35 @@ namespace SAMMEN.API.Services.Operativo
             }
         }
 
-        //create the update path
+        public async Task<ResponseDto> UpdateCursosPorOperador(BodyCursosDto body)
+        {
+            try
+            {
+                var relaciones = await _context.OperadorCursos.ToListAsync();
+                if (relaciones == null) throw new Exception("Relaciones Operador curso no encontradas");
+                var relacionesFiltered = relaciones.Where(w => w.IdOperador == body.IdOperador).ToList();
+                if (relacionesFiltered.Count == 0) throw new Exception("Este operador no cuenta con nigun curso actualmente");
+                
+                var relacionesUpdatedList = new List<OperadorCurso>();
+
+                body.CursosDtos.ForEach(curso =>
+                {
+                    var relacion = relacionesFiltered.FirstOrDefault(f=> f.IdCurso == curso.Item);
+                    relacion.Vigencia = curso.Vigencia;
+                    relacion.Estatus = curso.Estatus;
+                    relacionesUpdatedList.Add(relacion);
+                });
+
+                _context.UpdateRange(relacionesUpdatedList);
+                await _context.SaveChangesAsync();
+                return new ResponseDto(false, "Cursos actualizados correctamente");
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "UpdateCursosPorOperador", ex.Message);
+                return null;
+            }
+        }
+
     }
 }

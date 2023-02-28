@@ -1,7 +1,6 @@
 ﻿using AuthJWT.Dtos.Operativo;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using SAMMEN.API.Services.Operativo;
 using SAMMEN.API.Services.Operativo.Interfaces;
 
 namespace SAMMEN.API.Controllers.Operativo
@@ -64,7 +63,7 @@ namespace SAMMEN.API.Controllers.Operativo
         }
 
         [HttpPost("NewCursosPorOperador")]
-        public async Task<IActionResult> NewCursosPorOperador([FromBody] NewCursosDto body)
+        public async Task<IActionResult> NewCursosPorOperador([FromBody] BodyCursosDto body)
         {
             try
             {
@@ -76,6 +75,21 @@ namespace SAMMEN.API.Controllers.Operativo
             {
                 return BadRequest(ex.Message);
             }
+        }
+
+        [HttpPut("UpdateCursosPorOperador")]
+        public async Task<IActionResult> UpdateCursosPorOperador([FromBody] BodyCursosDto body)
+        {
+            try
+            {
+                var res = await _cursosRepository.UpdateCursosPorOperador(body);
+                if (res == null) throw new Exception("Error al actualizar cursos");
+                return Ok(res);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }            
         }
 
     }

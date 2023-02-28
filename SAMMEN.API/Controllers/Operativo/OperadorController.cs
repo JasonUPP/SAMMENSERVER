@@ -76,5 +76,20 @@ namespace SAMMEN.API.Controllers.Operativo
                 return BadRequest(ex.Message);
             }
         }
+
+        [HttpPut("UpdateEstatus")]
+        public async Task<IActionResult> UpdateEstatus([FromBody] OperadorEstatusDto operadorEstatusDto)
+        {
+            try
+            {
+                var res = await _operadorRepository.UpdateEstatus(operadorEstatusDto);
+                if (res == null) throw new Exception("Error al actualizar estatus del operador");
+                return Ok(res);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
     }
 }

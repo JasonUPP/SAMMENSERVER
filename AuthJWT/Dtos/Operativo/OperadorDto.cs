@@ -16,5 +16,6 @@
         public string CVSAMMEN { get; set; }//posible archivo
         public string ExamenesMedicos { get; set; }//posible archivo
         public string CursosOExperiencia { get; set; }//posible archivo
+        public int Estatus { get; set; }
     }
 }
