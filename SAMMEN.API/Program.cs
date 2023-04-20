@@ -30,11 +30,13 @@ try
     builder.Services.AddScoped<IUbicacion, UbicacionRepository>();
     builder.Services.AddScoped<ICursosRepository, CursosRepository>();
     builder.Services.AddScoped<ITokenService, TokenService>();
-    builder.Services.AddCors(options => {
+    builder.Services.AddCors(options =>
+    {
         options.AddPolicy(name: "cors",
                           policy =>
                           {
-                              policy.WithOrigins("*")
+                              policy
+                              .AllowAnyOrigin()
                               .AllowAnyMethod()
                               .AllowAnyHeader();
                           });
